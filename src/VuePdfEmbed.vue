@@ -246,11 +246,19 @@ const render = async () => {
         const page = await doc.value!.getPage(pageNum)
         const pageRotation =
           ((props.rotation % 90 === 0 ? props.rotation : 0) + page.rotate) % 360
-        const [canvas, div1, div2] = Array.from(pageRefs.value[i].children) as [
+        const pageElem = document.getElementById(`${props.id}-${pageNum}`)
+        console.log(pageElem, 'page')
+        const [canvas, div1, div2] = Array.from(pageElem.children) as [
           HTMLCanvasElement,
           HTMLDivElement,
           HTMLDivElement,
         ]
+        console.log(canvas, 'canvas')
+        // const [canvas, div1, div2] = Array.from(pageRefs.value[i].children) as [
+        //   HTMLCanvasElement,
+        //   HTMLDivElement,
+        //   HTMLDivElement,
+        // ]
         const isTransposed = !!((pageRotation / 90) % 2)
         const [actualWidth, actualHeight] = getPageDimensions(
           isTransposed
