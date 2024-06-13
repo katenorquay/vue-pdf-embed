@@ -248,7 +248,7 @@ const render = async () => {
           ((props.rotation % 90 === 0 ? props.rotation : 0) + page.rotate) % 360
         const pageElem = document.getElementById(`${props.id}-${pageNum}`)
         console.log(pageElem, 'page')
-        const [canvas, div1, div2] = Array.from(pageElem?.children) as [
+        const [canvas, div1, div2] = Array.from(pageElem?.children || []) as [
           HTMLCanvasElement,
           HTMLDivElement,
           HTMLDivElement,
